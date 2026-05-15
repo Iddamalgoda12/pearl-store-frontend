@@ -49,8 +49,13 @@ defineProps<{
       <div class="mt-4 flex items-center justify-between">
         <span class="text-2xl font-bold text-black"> ${{ product.price }} </span>
 
-        <span class="text-sm text-gray-400 line-through">
-          ${{ (product.price + (product.price * product.discountPercentage) / 100).toFixed(0) }}
+        <span
+          v-if="product.discountPercentage > 0"
+          class="text-sm text-gray-400 line-through"
+        >
+          ${{
+            (product.price / (1 - product.discountPercentage / 100)).toFixed(0)
+          }}
         </span>
       </div>
 

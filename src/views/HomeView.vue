@@ -1,7 +1,16 @@
-<template>
-  <div class="p-10">
-    <h1 class="text-4xl font-bold">Welcome to PearlStore</h1>
+<script setup lang="ts">
+import HeroSection from '@/components/home/HeroSection.vue'
+import FeaturedCollections from '@/components/home/FeaturedCollections.vue'
+</script>
 
-    <p class="mt-4 text-gray-600">Modern ecommerce store built with Vue + Tailwind</p>
+<template>
+  <div class="min-h-screen bg-[#F8F9FA]">
+    <Navbar />
+
+    <main>
+      <HeroSection />
+
+      <FeaturedCollections />
+    </main>
   </div>
 </template>

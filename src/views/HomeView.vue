@@ -1,27 +1,19 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { api } from '@/services/api'
-import type { Product } from '@/types/product'
-
-const products = ref<Product[]>([])
-
-const fetchProducts = async () => {
-  const response = await api.get('/products')
-
-  products.value = response.data.products
-}
-
-onMounted(() => {
-  fetchProducts()
-})
+import HeroSection from '@/components/home/HeroSection.vue'
+import FeaturedCollections from '@/components/home/FeaturedCollections.vue'
+import TrendingProducts from '@/components/home/TrendingProducts.vue'
 </script>
 
 <template>
-  <div>
-    <h1>Products</h1>
+  <div class="min-h-screen bg-[#F8F9FA]">
+    <Navbar />
 
-    <div v-for="product in products" :key="product.id">
-      {{ product.title }}
-    </div>
+    <main>
+      <HeroSection />
+
+      <FeaturedCollections />
+
+      <TrendingProducts />
+    </main>
   </div>
 </template>

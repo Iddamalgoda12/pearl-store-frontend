@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import HeroImage from '@/assets/images/hero.png'
 </script>
 
@@ -28,11 +29,12 @@ import HeroImage from '@/assets/images/hero.png'
         Inspired by the Pearl of the Indian Ocean— bringing you quality and elegance.
       </p>
 
-      <button
-        class="mt-8 rounded-md bg-[#191C1D] px-10 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-black"
+      <RouterLink
+        to="/collections"
+        class="mt-8 inline-block rounded-md bg-[#191C1D] px-10 py-4 font-bold uppercase tracking-wider text-white transition hover:bg-black"
       >
         Shop Now
-      </button>
+      </RouterLink>
     </div>
   </section>
 </template>

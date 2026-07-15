@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 defineProps<{
   category: string
   title: string
-  price: string
+  price: number
   image: string
   href: string
   badge?: string
@@ -15,41 +15,43 @@ defineProps<{
 <template>
   <RouterLink
     :to="href"
-    class="group block rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    class="group block transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-500"
   >
-    <!-- Image -->
-    <div class="relative overflow-hidden rounded-md border border-gray-200 bg-[#F3F4F5]">
+    <!-- Product Image -->
+    <div class="relative overflow-hidden rounded-md border border-gray-200 bg-[#F3F4F5] shadow-sm">
       <img
         :src="image"
-        :alt="title"
-        class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105"
+        :alt="`${title} product image`"
+        loading="lazy"
+        class="h-[340px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
 
       <!-- Badge -->
       <div
         v-if="badge"
-        class="absolute right-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+        class="absolute right-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em]"
         :class="badgeColor === 'orange' ? 'bg-[#FFDBCC] text-[#351000]' : 'bg-[#191C1D] text-white'"
       >
         {{ badge }}
       </div>
     </div>
 
-    <!-- Product Info -->
-    <div class="mt-6 px-1">
-      <p class="font-inter text-[10px] uppercase tracking-[0.1em] text-[#464555]">
+    <!-- Product Details -->
+    <div class="space-y-2 px-1 pt-5">
+      <!-- Category -->
+      <p class="font-inter text-[10px] uppercase tracking-[0.12em] text-[#6B7280]">
         {{ category }}
       </p>
 
+      <!-- Title -->
       <h3
-        class="mt-2 font-manrope text-[18px] font-bold text-[#191C1D] transition group-hover:text-[#4F46E5]"
+        class="line-clamp-2 min-h-[56px] font-manrope text-[18px] font-bold leading-7 text-[#191C1D] transition-colors duration-300 group-hover:text-[#4F46E5]"
       >
         {{ title }}
       </h3>
 
-      <p class="mt-2 font-inter text-[16px] font-medium text-[#4F46E5]">
-        {{ price }}
-      </p>
+      <!-- Price -->
+      <p class="font-inter text-[16px] font-semibold text-[#4F46E5]">${{ price.toFixed(2) }}</p>
     </div>
   </RouterLink>
 </template>

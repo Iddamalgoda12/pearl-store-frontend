@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HeroSection from '@/components/home/HeroSection.vue'
 import FeaturedCollections from '@/components/home/FeaturedCollections.vue'
+import TrendingProducts from '@/components/home/TrendingProducts.vue'
 </script>
 
 <template>
@@ -11,6 +12,8 @@ import FeaturedCollections from '@/components/home/FeaturedCollections.vue'
       <HeroSection />
 
       <FeaturedCollections />
+
+      <TrendingProducts />
     </main>
   </div>
 </template>

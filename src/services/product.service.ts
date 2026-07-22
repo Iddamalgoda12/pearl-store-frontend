@@ -8,6 +8,12 @@ export async function getTrendingProducts(): Promise<Product[]> {
   return data.products.sort((a, b) => b.rating - a.rating).slice(0, 4)
 }
 
+export async function getProductById(id: number): Promise<Product> {
+  const { data } = await api.get<Product>(`/products/${id}`)
+
+  return data
+}
+
 export async function getProductsByMainCategory(category: MainCategory): Promise<Product[]> {
   const subCategories = CATEGORY_MAP[category]
 

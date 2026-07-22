@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 defineProps<{
   title: string
   description: string
   buttonText: string
   image: string
+  to: string
   large?: boolean
 }>()
 </script>
@@ -35,11 +38,12 @@ defineProps<{
         {{ description }}
       </p>
 
-      <button
+      <RouterLink
+        :to="to"
         class="mt-2 w-fit border-b border-[#4F46E5] pb-1 font-inter text-xs uppercase tracking-[0.1em] text-[#4F46E5] transition hover:text-[#3730A3]"
       >
         {{ buttonText }}
-      </button>
+      </RouterLink>
     </div>
   </article>
 </template>

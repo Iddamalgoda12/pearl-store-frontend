@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 import type { Product } from '@/types/product'
 
 defineProps<{
@@ -7,7 +9,8 @@ defineProps<{
 </script>
 
 <template>
-  <div
+  <RouterLink
+    :to="`/products/${product.id}`"
     class="group overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
   >
     <!-- Product Image -->
@@ -66,5 +69,5 @@ defineProps<{
         Add to Cart
       </button>
     </div>
-  </div>
+  </RouterLink>
 </template>

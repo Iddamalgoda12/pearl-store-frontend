@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 import type { Product } from '@/types/product'
 
 defineProps<{
@@ -7,7 +9,8 @@ defineProps<{
 </script>
 
 <template>
-  <article
+  <RouterLink
+    :to="`/products/${product.id}`"
     class="group flex h-[700px] flex-col border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
   >
     <!-- Image -->
@@ -47,5 +50,5 @@ defineProps<{
         <span class="text-2xl font-bold text-[#191C1D]"> ${{ product.price }} </span>
       </div>
     </div>
-  </article>
+  </RouterLink>
 </template>

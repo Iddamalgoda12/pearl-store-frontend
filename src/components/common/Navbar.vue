@@ -3,10 +3,13 @@ import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
 import MoonIcon from '@/assets/icons/navbar/moon.svg'
+import SunIcon from '@/assets/icons/navbar/sun.svg'
 import CartIcon from '@/assets/icons/navbar/cart.svg'
 import UserIcon from '@/assets/icons/navbar/user.svg'
+import { useThemeStore } from '@/stores/theme'
 
 const route = useRoute()
+const themeStore = useThemeStore()
 
 const isShopActive = computed(() => route.path === '/shop')
 const isCollectionsActive = computed(() => route.path === '/collections')
@@ -45,15 +48,19 @@ const isCollectionsActive = computed(() => route.path === '/collections')
 
       <!-- Icons -->
       <div class="flex items-center gap-6">
-        <button aria-label="Toggle theme" class="transition-opacity hover:opacity-70">
-          <img :src="MoonIcon" alt="Theme" class="h-[18px] w-[18px]" />
+        <button
+          aria-label="Toggle theme"
+          class="transition-opacity hover:opacity-70"
+          @click="themeStore.toggleTheme()"
+        >
+          <img :src="themeStore.isDark ? SunIcon : MoonIcon" alt="Theme" class="h-[18px] w-[18px]" />
         </button>
 
         <RouterLink to="/cart" aria-label="Shopping cart" class="transition-opacity hover:opacity-70">
           <img :src="CartIcon" alt="Cart" class="h-5 w-4" />
         </RouterLink>
 
-        <RouterLink to="/login" aria-label="User profile" class="transition-opacity hover:opacity-70">
+        <RouterLink to="/account" aria-label="User profile" class="transition-opacity hover:opacity-70">
           <img :src="UserIcon" alt="User" class="h-4 w-4" />
         </RouterLink>
       </div>

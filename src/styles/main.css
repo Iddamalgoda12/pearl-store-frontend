@@ -1,2 +1,137 @@
 @import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@400;700;800&display=swap');
+
+:root {
+  --page-bg: #f8f9fa;
+  --surface-bg: #ffffff;
+  --surface-soft: #fafafa;
+  --text-primary: #191c1d;
+  --text-secondary: #464555;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-hover: #3730a3;
+  --button-dark: #191c1d;
+  --button-dark-hover: #323437;
+}
+
+html[data-theme='dark'] {
+  --page-bg: #090f1a;
+  --surface-bg: #10182a;
+  --surface-soft: #151f33;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #1b253b;
+  --accent: #8b8dfb;
+  --accent-hover: #a5a7ff;
+  --button-dark: #e5e7eb;
+  --button-dark-hover: #ffffff;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+* {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+button,
+a,
+input,
+select {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+html[data-theme='dark'] header,
+html[data-theme='dark'] section,
+html[data-theme='dark'] main,
+html[data-theme='dark'] aside,
+html[data-theme='dark'] article,
+html[data-theme='dark'] form,
+html[data-theme='dark'] .bg-white,
+html[data-theme='dark'] .bg-\[\#FAFAFA\],
+html[data-theme='dark'] .bg-\[\#F8F9FA\],
+html[data-theme='dark'] .bg-\[\#F8F8F8\] {
+  background-color: var(--surface-bg) !important;
+}
+
+html[data-theme='dark'] .bg-\[\#FAFAFA\],
+html[data-theme='dark'] .bg-\[\#F8F9FA\],
+html[data-theme='dark'] .bg-\[\#F8F8F8\] {
+  background-color: var(--surface-soft) !important;
+}
+
+html[data-theme='dark'] .border,
+html[data-theme='dark'] [class*='border-gray-100'],
+html[data-theme='dark'] [class*='border-gray-200'],
+html[data-theme='dark'] [class*='border-gray-300'] {
+  border-color: var(--border-color) !important;
+}
+
+html[data-theme='dark'] .text-\[\#191C1D\],
+html[data-theme='dark'] .text-black,
+html[data-theme='dark'] .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] .text-\[\#464555\],
+html[data-theme='dark'] .text-gray-700,
+html[data-theme='dark'] .text-gray-600,
+html[data-theme='dark'] .text-gray-500 {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme='dark'] .text-\[\#6B7280\],
+html[data-theme='dark'] .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme='dark'] .bg-\[\#191C1D\],
+html[data-theme='dark'] .bg-black {
+  background-color: var(--button-dark) !important;
+  color: var(--page-bg) !important;
+}
+
+html[data-theme='dark'] .hover\:bg-\[\#323437\]:hover,
+html[data-theme='dark'] .hover\:bg-gray-800:hover {
+  background-color: var(--button-dark-hover) !important;
+  color: var(--page-bg) !important;
+}
+
+html[data-theme='dark'] .text-\[\#4F46E5\],
+html[data-theme='dark'] .hover\:text-\[\#4F46E5\]:hover {
+  color: var(--accent) !important;
+}
+
+html[data-theme='dark'] .hover\:text-\[\#3730A3\]:hover {
+  color: var(--accent-hover) !important;
+}
+
+html[data-theme='dark'] input,
+html[data-theme='dark'] select {
+  background-color: var(--surface-soft) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme='dark'] input::placeholder {
+  color: var(--text-muted) !important;
+}

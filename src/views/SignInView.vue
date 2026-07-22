@@ -6,6 +6,9 @@ import AuthHero from '@/components/sign_in/AuthHero.vue'
 import AuthInput from '@/components/sign_in/AuthInput.vue'
 import PasswordInput from '@/components/sign_in/PasswordInput.vue'
 import SocialAuthButtons from '@/components/sign_in/SocialAuthButtons.vue'
+import MoonIcon from '@/assets/icons/navbar/moon.svg'
+import SunIcon from '@/assets/icons/navbar/sun.svg'
+import { useThemeStore } from '@/stores/theme'
 
 const form = reactive({
   email: '',
@@ -19,6 +22,7 @@ const touched = reactive({
 
 const isSubmitting = ref(false)
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const themeStore = useThemeStore()
 
 const errors = computed(() => ({
   email: !form.email.trim()
@@ -48,7 +52,16 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="grid min-h-screen bg-[#F8F9FA] lg:grid-cols-2">
+  <div class="relative grid min-h-screen bg-[#F8F9FA] lg:grid-cols-2">
+    <button
+      type="button"
+      aria-label="Toggle theme"
+      class="absolute right-6 top-6 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-opacity hover:opacity-80 sm:right-8 sm:top-8 lg:right-10 lg:top-10"
+      @click="themeStore.toggleTheme()"
+    >
+      <img :src="themeStore.isDark ? SunIcon : MoonIcon" alt="Theme" class="h-[18px] w-[18px]" />
+    </button>
+
     <AuthHero
       eyebrow="Pearl Store"
       title="Log in to shop, save, and track your orders."

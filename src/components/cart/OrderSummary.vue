@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 defineProps<{
   subtotal: number
   shipping: number
@@ -52,12 +54,12 @@ defineProps<{
       </p>
     </div>
 
-    <button
-      type="button"
-      class="w-full rounded-xl bg-[#191C1D] px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white transition duration-300 hover:bg-[#323437] active:scale-[0.99]"
+    <RouterLink
+      to="/checkout"
+      class="inline-flex w-full items-center justify-center rounded-xl bg-[#191C1D] px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white transition duration-300 hover:bg-[#323437] active:scale-[0.99]"
     >
       Proceed to Checkout
-    </button>
+    </RouterLink>
 
     <div class="rounded-2xl border border-gray-200 bg-[#FAFAFA] p-5 text-sm leading-6 text-[#464555]">
       <p class="font-semibold text-[#191C1D]">Shopping Benefits</p>

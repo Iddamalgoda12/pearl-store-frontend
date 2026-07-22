@@ -9,6 +9,9 @@ import CartView from '@/views/CartView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import SignInView from '@/views/SignInView.vue'
 import ForgotPasswordView from '@/views/ForgotPasswordView.vue'
+import AccountView from '@/views/AccountView.vue'
+import CheckoutView from '@/views/CheckoutView.vue'
+import CheckoutSuccessView from '@/views/CheckoutSuccessView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +61,21 @@ const router = createRouter({
           path: 'cart',
           name: 'cart',
           component: CartView,
+        },
+        {
+          path: 'checkout',
+          name: 'checkout',
+          component: CheckoutView,
+        },
+        {
+          path: 'checkout/success',
+          name: 'checkout-success',
+          component: CheckoutSuccessView,
+        },
+        {
+          path: 'account',
+          name: 'account',
+          component: AccountView,
         },
       ],
     },

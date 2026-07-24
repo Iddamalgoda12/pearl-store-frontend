@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Sidebar from './Sidebar.vue'
 import CollectionHeader from './CollectionHeader.vue'
@@ -18,6 +19,14 @@ const currentPage = ref(1)
 const loading = ref(true)
 const error = ref('')
 const itemsPerPage = 9
+const route = useRoute()
+
+const categoryQueryMap: Record<string, MainCategory> = {
+  clothing: 'Clothing',
+  electronics: 'Electronics',
+  furniture: 'Furniture',
+  extra: 'Extra',
+}
 
 const loadProducts = async () => {
   loading.value = true
@@ -34,6 +43,25 @@ const loadProducts = async () => {
   } finally {
     loading.value = false
   }
+}
+
+const applyRouteCategory = () => {
+  const categoryParam = Array.isArray(route.query.category)
+    ? route.query.category[0]
+    : route.query.category
+
+  if (typeof categoryParam !== 'string') {
+    return
+  }
+
+  const category = categoryQueryMap[categoryParam.toLowerCase()]
+
+  if (!category) {
+    return
+  }
+
+  selectedCategory.value = category
+  selectedSubcategory.value = null
 }
 
 const filteredProducts = computed(() => {
@@ -78,8 +106,15 @@ const goToPage = (page: number) => {
 }
 
 onMounted(loadProducts)
+onMounted(applyRouteCategory)
 
 watch([selectedCategory, selectedSubcategory], loadProducts)
+watch(
+  () => route.query.category,
+  () => {
+    applyRouteCategory()
+  },
+)
 watch([selectedCategory, selectedSubcategory, searchQuery, sortOption], () => {
   currentPage.value = 1
 })
@@ -92,8 +127,8 @@ watch(totalPages, (nextTotalPages) => {
 </script>
 
 <template>
-  <section class="flex min-h-screen bg-[#F8F8F8]">
-    <div class="sticky top-0 h-screen flex-shrink-0 self-start">
+  <section class="min-h-screen bg-[#F8F8F8] lg:pl-[270px]">
+    <div class="fixed left-0 top-20 hidden h-[calc(100vh-5rem)] w-[270px] overflow-y-auto border-r border-gray-200 bg-[#FAFAFA] lg:block">
       <Sidebar
         :selectedCategory="selectedCategory"
         :selectedSubcategory="selectedSubcategory"
@@ -110,7 +145,7 @@ watch(totalPages, (nextTotalPages) => {
       />
     </div>
 
-    <main class="flex-1 overflow-y-auto px-10 py-8">
+    <main class="px-10 py-8">
       <CollectionHeader
         :title="selectedCategory"
         :search-query="searchQuery"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 import ProductCard from './ProductCard.vue'
 
@@ -57,11 +58,12 @@ onMounted(async () => {
 
       <!-- Button -->
       <div class="mt-16 flex justify-center">
-        <button
+        <RouterLink
+          to="/collections"
           class="rounded-md border border-[#464555] px-12 py-4 font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#191C1D] transition-all duration-300 hover:bg-[#191C1D] hover:text-white"
         >
           VIEW FULL COLLECTION
-        </button>
+        </RouterLink>
       </div>
     </div>
   </section>

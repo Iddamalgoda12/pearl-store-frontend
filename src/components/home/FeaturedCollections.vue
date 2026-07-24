@@ -22,8 +22,9 @@ import ExtrasImage from '@/assets/images/categories/extras.png'
           large
           title="Clothing"
           description="Clothing for everyone."
-          button-text="Explore Series"
+          button-text="Explore Clothing"
           :image="ClothingImage"
+          to="/collections?category=Clothing"
         />
 
         <!-- Electronics -->
@@ -32,6 +33,7 @@ import ExtrasImage from '@/assets/images/categories/extras.png'
           description="Every electrical needs in one place."
           button-text="View Devices"
           :image="ElectronicsImage"
+          to="/collections?category=Electronics"
         />
 
         <!-- Furniture -->
@@ -40,6 +42,7 @@ import ExtrasImage from '@/assets/images/categories/extras.png'
           description="Objects of intent."
           button-text="Explore Furniture"
           :image="FurnitureImage"
+          to="/collections?category=Furniture"
         />
 
         <!-- Extras -->
@@ -49,6 +52,7 @@ import ExtrasImage from '@/assets/images/categories/extras.png'
           description="The final touch for the architectural lifestyle."
           button-text="Explore"
           :image="ExtrasImage"
+          to="/collections?category=Extra"
         />
       </div>
     </div>
